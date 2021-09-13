@@ -17,20 +17,19 @@ const promise2 = new Promise((resolve, reject) => {
 
 promise1
   .then(() => {
-    const message = document.createElement('div');
-
-    message.classList.add('message');
-    message.textContent = 'Promise was resolved!';
-
-    document.body.append(message);
+    createMessage('message', 'Promise was resolved!');
   });
 
 promise2
   .catch(() => {
-    const message = document.createElement('div');
-
-    message.classList.add('error-message');
-    message.textContent = 'Promise was rejected!';
-
-    document.body.append(message);
+    createMessage('error-message', 'Promise was rejected!');
   });
+
+function createMessage(clas, mes) {
+  const message = document.createElement('div');
+
+  message.classList.add(`${clas}`);
+  message.textContent = `${mes}`;
+
+  document.body.append(message);
+};
